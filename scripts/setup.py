@@ -65,6 +65,17 @@ def write_rest(reset):
 	command = f'(crontab -l; echo "{cmd}") | sort - | uniq - | crontab -' #sort and uniq are added to ensure no duplicates
 	os.system(command)
 
+def change_perms(reset):
+	'''
+	Changes permissions to all files that will need to be executed in crontab
+	'''
+	files = os.listdir(abspath)
+	
+	for file in files:
+		os.system(f'sudo chmod +x {abspath}/{file}')
+
+	sys.stdout.write('Successfully changed all permissions.')
+
 if __name__ == '__main__':
 	#ask to empty crontab
 	if '-e' in sys.argv:
@@ -83,3 +94,4 @@ if __name__ == '__main__':
 		os.system(f'sudo chmod +x {abspath}/reset_data.sh')
 	write_rest('-r' in sys.argv)
 	sys.stdout.write('Crontab setup complete.\n')
+	change_perms('-r' in sys.argv)
