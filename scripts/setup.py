@@ -57,8 +57,6 @@ def write_rest(reset):
 		cmd2 = f'{abspath}/reset_data.sh 2>> {errfile}'
 	else:
 		cmd2 = 'false'
-	#write upload using git commands
-	cmd3 = f"cd {abspath}/../data && git add . && git commit -m 'added data' && git pull && git push"
 	#write final crontab command
 	cmd = f'{time} {cmd1} ; {cmd2} ; {cmd3} ;'
 	#write command in crontab
