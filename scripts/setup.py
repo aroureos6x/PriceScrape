@@ -81,7 +81,7 @@ def remove_placeholders():
 	for dir1 in ['crypto_csvs','stocks_csvs']:
 		for dir2 in ['minute','hour']:
 			path = os.path.join(abspath,'..','data',dir1,dir2,'placeholder')
-			if os.exists(path):
+			if os.path.exists(path):
 				os.remove(path)
 
 if __name__ == '__main__':
