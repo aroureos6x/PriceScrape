@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import os,sys,getpass
+import os,sys
 
 abspath = os.path.dirname(os.path.abspath(__file__)) 
 
