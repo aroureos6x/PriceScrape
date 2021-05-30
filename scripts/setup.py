@@ -64,7 +64,7 @@ def write_rest():
 
 if __name__ == '__main__':
 	#ask to empty crontab
-	if input('Empty crontab? Y/N\n').lower() == 'y':
+	if '-e' in sys.argv:
 		os.system('echo "" | crontab -')
 
 	#use sys.stdin to read input
@@ -74,7 +74,7 @@ if __name__ == '__main__':
 		ticker, type = i[:i.find(',')], i[i.find(',')+1:].strip()
 		write_cronjob(ticker,type)
 		tickers.append((ticker,type))
-	if input('Reset minute prices every minute? Y/N\n') == 'y':
+	if '-r' in sys.argv:
 		write_reset_data(tickers)
 		#change permissions for reset_data.sh
 		os.system(f'sudo chmod +x {abspath}/reset_data.sh')
