@@ -1,0 +1,2 @@
+#!/bin/bash
+printf "" > /home/yiannis/PriceScrape/scripts/../data/crypto_csvs/minute/mBTC-USD.csv > /home/yiannis/PriceScrape/scripts/../data/crypto_csvs/minute/mETH-USD.csv > /home/yiannis/PriceScrape/scripts/../data/stocks_csvs/minute/mTSLA.csv > /home/yiannis/PriceScrape/scripts/../data/stocks_csvs/minute/mAAPL.csv 
