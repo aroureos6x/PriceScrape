@@ -79,4 +79,4 @@ if __name__ == '__main__':
 		#change permissions for reset_data.sh
 		os.system(f'sudo chmod +x {abspath}/reset_data.sh')
 	write_rest()
-	sys.stdout.write('Crontab setup complete.')
+	sys.stdout.write('Crontab setup complete.\n')
