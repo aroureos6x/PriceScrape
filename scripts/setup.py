@@ -32,7 +32,7 @@ def write_reset_data(tickers):
 	Creates and writes a bash script that will be used to clear
 	data files.
 	'''
-	with open('reset_data.sh','w',encoding='utf-8') as file:
+	with open(f'{abspath}/reset_data.sh','w',encoding='utf-8') as file:
 	#write shebang line
 		file.write("#!/bin/bash\n")
 	#write initial printf
