@@ -58,7 +58,7 @@ def write_rest(reset):
 	else:
 		cmd2 = 'false'
 	#write final crontab command
-	cmd = f'{time} {cmd1} ; {cmd2} ; {cmd3} ;'
+	cmd = f'{time} {cmd1} ; {cmd2} ;'
 	#write command in crontab
 	command = f'(crontab -l; echo "{cmd}") | sort - | uniq - | crontab -' #sort and uniq are added to ensure no duplicates
 	os.system(command)
