@@ -42,10 +42,10 @@ def write_reset_data(tickers):
 			file.write(f'> {path} ')
 
 
-def write_rest():
+def write_rest(reset):
 	'''
 	Writes one by one the rest cron jobs.
-	param tickers: list -> strings of tickers
+	param reset: bool
 	'''
 	#time
 	time = '0 * * * *'
@@ -53,7 +53,10 @@ def write_rest():
 	errfile = f'{abspath}/../data/log/error.log'
 	cmd1 = f'{abspath}/convert_data.py 2>> {errfile}'
 	#write reset_data.sh command
-	cmd2 = f'{abspath}/reset_data.sh 2>> {errfile}'
+	if reset:
+		cmd2 = f'{abspath}/reset_data.sh 2>> {errfile}'
+	else:
+		cmd2 = 'false'
 	#write upload using git commands
 	cmd3 = f"cd {abspath}/../data && git add . && git commit -m 'added data' && git pull && git push"
 	#write final crontab command
