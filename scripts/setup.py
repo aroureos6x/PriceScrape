@@ -74,7 +74,7 @@ def change_perms(reset):
 	for file in files:
 		os.system(f'sudo chmod +x {abspath}/{file}')
 
-	sys.stdout.write('Successfully changed all permissions.')
+	sys.stdout.write('Successfully changed all permissions.\n')
 
 if __name__ == '__main__':
 	#ask to empty crontab
