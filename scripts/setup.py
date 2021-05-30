@@ -74,6 +74,16 @@ def change_perms(reset):
 
 	sys.stdout.write('Successfully changed all permissions.\n')
 
+def remove_placeholders():
+	'''
+	Removes placeholder files from the repo
+	'''
+	for dir1 in ['crypto_csvs','stocks_csvs']:
+		for dir2 in ['minute','hour']:
+			path = os.path.join(abspath,'..','data',dir1,dir2,'placeholder')
+			if os.exists(path):
+				os.remove(path)
+
 if __name__ == '__main__':
 	#ask to empty crontab
 	if '-e' in sys.argv:
@@ -93,3 +103,4 @@ if __name__ == '__main__':
 	write_rest('-r' in sys.argv)
 	sys.stdout.write('Crontab setup complete.\n')
 	change_perms('-r' in sys.argv)
+	remove_placeholders()
