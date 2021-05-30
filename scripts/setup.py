@@ -68,7 +68,7 @@ def change_perms(reset):
 	Changes permissions to all files that will need to be executed in crontab
 	'''
 	files = os.listdir(abspath)
-	
+
 	for file in files:
 		os.system(f'sudo chmod +x {abspath}/{file}')
 
@@ -84,8 +84,15 @@ def remove_placeholders():
 			if os.path.exists(path):
 				os.remove(path)
 
+def install_reqs():
+	'''
+	Installs required libraries by executing the requirements.sh file.
+	'''
+	os.system(f'sudo chmod +x {abspath}/requirements.sh')
+	os.system(f'{abspath}/requirements.sh')
+
 if __name__ == '__main__':
-	#ask to empty crontab
+	#empty crontab
 	if '-e' in sys.argv:
 		os.system('echo "" | crontab -')
 
@@ -96,11 +103,18 @@ if __name__ == '__main__':
 		ticker, type = i[:i.find(',')], i[i.find(',')+1:].strip()
 		write_cronjob(ticker,type)
 		tickers.append((ticker,type))
+
+	#setup reset_data.sh
 	if '-r' in sys.argv:
 		write_reset_data(tickers)
 		#change permissions for reset_data.sh
 		os.system(f'sudo chmod +x {abspath}/reset_data.sh')
+	#install required libraries
+	if '-d' in sys.argv:
+		install_reqs()
+
 	write_rest('-r' in sys.argv)
 	sys.stdout.write('Crontab setup complete.\n')
 	change_perms('-r' in sys.argv)
 	remove_placeholders()
+
