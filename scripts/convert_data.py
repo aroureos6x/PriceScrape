@@ -3,6 +3,8 @@
 import csv,os,sys
 from datetime import datetime,timedelta
 
+abspath = os.path.dirname(os.path.abspath(__file__))
+
 def check_mtimes():
 	'''
 	Checks the modification times of all csv files and returns those
@@ -10,8 +12,8 @@ def check_mtimes():
 	'''
 	files = []
 	paths = [
-	os.path.join(os.path.abspath(__file__),'..','data','crypto_csvs','minute'),
-	os.path.join(os.path.abspath(__file__),'..','data','stocks_csvs','minute')
+	os.path.join(abspath,'..','data','crypto_csvs','minute'),
+	os.path.join(abspath,'..','data','stocks_csvs','minute')
 	]
 	now = datetime.utcnow()
 	for path,type in zip(paths,['crypto','stocks']):
