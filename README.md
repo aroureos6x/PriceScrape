@@ -25,6 +25,7 @@
     
     BTC-USD,crypto
     ETH-USD,crypto
+    XRP-USD,crypto
     AAPL,stocks
     TSLA,stocks
     
